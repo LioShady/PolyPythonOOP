@@ -1,7 +1,15 @@
 class Book:
     """ Базовый класс книги. """
-
     def __init__(self, name: str, author: str):
+        """
+        Инициализация экземпляра класса.
+
+        :param name: название книги
+        :param author: автор книги
+
+        Example:
+        >>> book = Book("some_name", "some_author")
+        """
         self._name = name
         self._author = author
 
@@ -21,7 +29,18 @@ class Book:
 
 
 class PaperBook(Book):
+    """ Наследник класса Book. Представляет собой бумажную книгу с определенным количеством страниц. """
     def __init__(self, name: str, author: str, pages: int):
+        """
+        Инициализация экземпляра класса.
+
+        :param name: название книги
+        :param author: автор книги
+        :param pages: количество страниц
+
+        Example:
+        >>> book = PaperBook("some_name", "some_author", 15)
+        """
         super().__init__(name, author)
         self.pages = pages
 
@@ -45,7 +64,18 @@ class PaperBook(Book):
 
 
 class AudioBook(Book):
+    """ Наследник класса Book. Представляет собой аудиокнигу с определенной длительностью. """
     def __init__(self, name: str, author: str, duration: float):
+        """
+        Инициализация экземпляра класса.
+
+        :param name: название книги
+        :param author: автор книги
+        :param duration: длительность аудиокниги
+
+        Example:
+        >>> book = AudioBook("some_name", "some_author", 5.7)
+        """
         super().__init__(name, author)
         self.duration = duration
 
@@ -66,9 +96,3 @@ class AudioBook(Book):
         if value <= 0:
             raise ValueError("duration must be positive")
         self._duration = value
-
-
-if __name__ == "__main__":
-    book = AudioBook('abc', 'ivan', 3.0)
-    print(book.author, book.name, book.duration)
-    # book.duration = 4.0
